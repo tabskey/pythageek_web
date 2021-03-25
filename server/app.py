@@ -1,43 +1,49 @@
 from flask import Flask, jsonify, request
+from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
 import math
 
 
 
-# configuration
-DEBUG = True
-
 # instantiate the app
 app = Flask(__name__)
+api = Api(app) 
 app.config.from_object(__name__)
 
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 #array de resultados prévios
-results= []
-
-# sanity check route
-# @app.route('/theory', methods=['GET'])
-# def ping_pong():
-#     return jsonify('pong!')
-
-# @app.route('/theory', methods=['GET']) ## mudara pra results
-# def last_results():
-#     if not results:
-#         response_obj = {'msg': 'Sem resultados no momento.'}
-#     else:
-#         response_obj = results[-1]    
-#     return jsonify(response_obj)
+results= []   
+operation_post_args = reqparse.RequestParser()
+operation_post_args.add_argument("numA", type=float, help="A number is required", required=True)
+operation_post_args.add_argument("numB", type=float, help="A number is required", required=True)
 
 
-@app.route('/theory/<numA>/<numB>', methods=['GET'])
-def pythagorean_theorem(numA,numB):
-     a = float(numA)
-     b = float(numB)
-     c = math.sqrt(a**2 + b**2)
-     return jsonify(c)
 
+class LastResult(Resource):
+    def get(self):
+        if not results:
+         response_obj = {'msg': 'Sem resultados no momento.'}
+        else:
+         response_obj = results[-10:][::-1]    
+        return jsonify(response_obj)
 
+class PythaOp(Resource):
+     def post(self):
+          args = operation_post_args.parse_args()
+          a = args["numA"]
+          b = args["numB"]
+          c = math.sqrt(a**2 + b**2)
+          results.append({'numero A': int(a), 'numero B': int(b), 'resultado': format(c, ".3f")})
+          result_response = {'result': float(format(c, ".3f"))}
+          return result_response     
+     
+
+# Rotas
+api.add_resource(PythaOp,'/theory')
+api.add_resource(LastResult, '/last_results')
+
+    
 if __name__ == '__main__':
     app.run(host="localhost", port=8000, debug=True)
