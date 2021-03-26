@@ -16,7 +16,9 @@ Pensando na melhor maneira de você ver o funcionamento, foi feito uma documenta
  - **PythaOp()**
  
  Que é onde ele vai pegar os parâmetros( os catetos) necessários para fazer a conta.
+ 
  Mas pera ai ***PI PI PI*** 🚓 🚓 
+ 
  Se você não preencher os espaços com números, não vai retornar a conta! Afinal, um triangulo precisa de dois catetos, né? 🔺 
 
 > numA:  *primeiro cateto*
@@ -51,9 +53,15 @@ E então rodar o projetinho com:
 python app.py
 ```
 E acessar com http://localhost:8000/theory para fazer as continhas.
+
 http://localhost:8000/last_results para ver as últimas continhas!
+
 http://localhost:8000/last_result para o último resultado!🥳
+
+
 ![](https://64.media.tumblr.com/tumblr_lsm7vvTjDR1qe36qq.gif)
+
+
 # O frontend :construction: :no_entry_sign:
 Infelizmente não pôde ser concluído a tempo, mas dá pra dar uma olhadinha nele!
 Foi criado até um logo pra remeter ao nosso moderníssimo Pitágoras.
