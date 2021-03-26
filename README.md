@@ -1,6 +1,7 @@
 
 ## E se o Pitágoras fosse um moderninho?
 *E se a gente pudesse mostrar pra todo mundo as maravilhas da matemática?*
+
 Retornando ao passado para aproximadamente 535 A.C. nos encontramos com o grande
 filósofo matemático Pitágoras que naquela época estava pensando em largar tudo e desistir
 de seu trabalho. Com isso, o nosso retorno ao passado trouxe um enorme desafio, que irá
