@@ -51,6 +51,7 @@ python app.py
 ```
 E acessar com http://localhost:8000/theory para fazer as continhas.
 http://localhost:8000/last_results para ver as últimas continhas!
+http://localhost:8000/last_result para o último resultado!🥳
 ![](https://64.media.tumblr.com/tumblr_lsm7vvTjDR1qe36qq.gif)
 # O frontend :construction: :no_entry_sign:
 Infelizmente não pôde ser concluído a tempo, mas dá pra dar uma olhadinha nele!
