@@ -13,7 +13,8 @@ Pensando na melhor maneira de você ver o funcionamento, foi feito uma documenta
 
 ### Ele contém três rotas, sendo:
 
- - PythaOp()
+ - **PythaOp()**
+ 
  Que é onde ele vai pegar os parâmetros( os catetos) necessários para fazer a conta.
  Mas pera ai ***PI PI PI*** 🚓 🚓 
  Se você não preencher os espaços com números, não vai retornar a conta! Afinal, um triangulo precisa de dois catetos, né? 🔺 
@@ -21,10 +22,10 @@ Pensando na melhor maneira de você ver o funcionamento, foi feito uma documenta
 > numA:  *primeiro cateto*
 > numB:  *segundo cateto*
 
- - ListResult()
+ - **ListResult()**
  É onde você vê a sua última continha pra não perder de vista, afinal, todo mundo ás vezes esquece, não é?
 
-- ListResults()
+- **ListResults()**
 Aqui é onde você vê as dez últimas operações dentro de uma listinha, se não, fica difícil decorar tudo 🙈
 
 ## Deu vontade de experimentar?
