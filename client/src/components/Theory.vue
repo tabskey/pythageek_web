@@ -1,37 +1,78 @@
 <template>
    <div class="container">
-    <b-button type="is-primary">{{ msg }}</b-button>
-  </div>
+    <div class="columns">
+      <div class="column is-narrow" style="width: 400px">
+      <div style="width: 200px"><section>
+        <br>
+        <b-field label="Number A">
+          <b-input></b-input>
+        </b-field>
+        <b-field label="Number B">
+          <b-input></b-input>
+        </b-field>
+         <b-button type="is-success">Calculate</b-button>
+      </section>
+      </div>
+      </div>
+      <div class="column is-narrow"> <br>
+        <div class="box" style="width: 400px"><h1 class="title">Result!</h1></div>
+      </div>
+      </div>
+    </div>
+  
 </template>
-
 <script>
-import axios from 'axios';
-
+import axios from 'axios'
 export default {
-  name: 'Ping',
+  name: "Theory",
   data() {
-    return {
-      msg: '',
+   return {
+     result: '',
+      CalcForm: {
+      numA: '',
+      numB: '',
+     
+   },
     };
   },
-  methods: {
-    getMessage() {
-      const path = 'http://localhost:8000/theory';
+  methods:{
+    getResult() {
+      const path = 'http://localhost:8000/last_result'
       axios.get(path)
-        .then((res) => {
-          this.msg = res.data;
+      .then((res) =>{
+        this.result = res.data.result
+      })
+      .catch((error) =>{
+        // eslint-disable-next-line
+          console.error(error);
+      }
+      )
+    },
+    addOperation(payload) {
+      const path = 'http://localhost:8000/theory'
+       axios.post(path, payload)
+        .then(() => {
+          this.getResult();
         })
         .catch((error) => {
           // eslint-disable-next-line
-          console.error(error);
+          console.log(error);
+          this.getResult();
         });
     },
-  },
-  created() {
-    this.getMessage();
-  },
-};
+    initOperation() {
+      this.addOperation.numA = '';
+      this.addOperation.numB = ''
+    },
+    SubmitOperation() {
+      const payload = {
+        numA: this.addOperation.numA,
+        numB: this.addOperation.numB
+      };
+      this.addOperation(payload);
+      this.initOperation();
+    }
+  }
+  
+}    
 </script>
-<style>
-
-</style>

@@ -24,7 +24,14 @@ operation_post_args.add_argument("numB", type=float, help="A number is required"
 class LastResult(Resource):
     def get(self):
         if not results:
-         response_obj = {'msg': 'Sem resultados no momento.'}
+         response_obj = {'msg': 'Any results registered yet.'}
+        else:
+         response_obj = results[-1]
+        return jsonify(response_obj)
+class LastResults(Resource):
+    def get(self):
+        if not results:
+         response_obj = {'msg': 'Any results registered yet.'}
         else:
          response_obj = results[-10:][::-1]    
         return jsonify(response_obj)
@@ -35,15 +42,15 @@ class PythaOp(Resource):
           a = args["numA"]
           b = args["numB"]
           c = math.sqrt(a**2 + b**2)
-          results.append({'numero A': int(a), 'numero B': int(b), 'resultado': format(c, ".3f")})
+          results.append({'number A': int(a), 'number B': int(b), 'result': format(c, ".3f")})
           result_response = {'result': float(format(c, ".3f"))}
           return result_response     
      
 
 # Rotas
 api.add_resource(PythaOp,'/theory')
-api.add_resource(LastResult, '/last_results')
-
+api.add_resource(LastResults, '/last_results')
+api.add_resource(LastResult, '/last_result')
     
 if __name__ == '__main__':
     app.run(host="localhost", port=8000, debug=True)
